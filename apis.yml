@@ -30,7 +30,7 @@ apis:
     url: https://vite.dev/guide/api-environment
 maintainers:
 - FN: Kin Lane
-  email: info@apievangelist.com
+  email: kin@apievangelist.com
 common:
 - url: https://vitejs.dev
   type: Website
