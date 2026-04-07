@@ -7,7 +7,6 @@ position: Consumer
 access: 3rd-Party
 image: https://vitejs.dev/logo.svg
 tags:
-  - API
   - Build Tools
   - Development Server
   - ESM
@@ -17,18 +16,14 @@ tags:
   - Vite
 created: '2025-01-08'
 modified: '2025-01-08'
-url: 
-  https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
   - aid: vite:vite
     name: Vite
-    description: The new Environment API allows users and framework authors to 
-      create as many environments as needed to map the way their apps work in 
-      production.
+    description: The new Environment API allows users and framework authors to create as many environments as needed to map the way their apps work in production.
     humanURL: https://vite.dev/guide/api-environment
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: https://vite.dev/guide/api-environment
