@@ -1,0 +1,36 @@
+{
+  "title": "Trigger Vite Production Build",
+  "description": "Example of programmatically triggering a Vite production build using build().",
+  "operation": "build",
+  "request": {
+    "function": "build",
+    "config": {
+      "root": "/my-project",
+      "mode": "production",
+      "build": {
+        "outDir": "dist",
+        "assetsDir": "assets",
+        "sourcemap": false,
+        "minify": "esbuild",
+        "emptyOutDir": true
+      }
+    }
+  },
+  "response": {
+    "type": "RollupOutput",
+    "output": [
+      {
+        "type": "chunk",
+        "fileName": "assets/index-Bs3yAOe7.js",
+        "isEntry": true,
+        "code": "...",
+        "modules": {}
+      },
+      {
+        "type": "asset",
+        "fileName": "index.html",
+        "source": "<!DOCTYPE html>..."
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+vocabulary:
+  name: Vite Vocabulary
+  description: >-
+    Canonical terms and concepts used across the Vite build tool ecosystem,
+    covering the JavaScript API, Plugin API, dev server, HMR, and configuration.
+  version: 1.0.0
+  created: '2026-05-03'
+  modified: '2026-05-03'
+  tags:
+    - Build Tools
+    - Frontend
+    - JavaScript
+    - Vite
+
+terms:
+  - term: Vite
+    definition: >-
+      Next-generation frontend build tool that provides a fast dev server using
+      native ES modules and an optimized production bundler powered by Rolldown.
+    tags:
+      - Core
+
+  - term: Dev Server
+    definition: >-
+      The Vite development server that serves source files as native ES modules,
+      enabling instant module-level hot replacement without full-page reloads.
+    tags:
+      - Server
+
+  - term: HMR
+    altTerms:
+      - Hot Module Replacement
+    definition: >-
+      A mechanism that replaces updated modules in the browser at runtime without
+      a full page reload, preserving application state during development.
+    tags:
+      - Development
+
+  - term: Plugin
+    definition: >-
+      A plain JavaScript object with lifecycle hook methods that extend Vite's
+      build pipeline, server behavior, and HTML transformation.
+    tags:
+      - Extension
+
+  - term: ESM
+    altTerms:
+      - ES Modules
+      - ECMAScript Modules
+    definition: >-
+      The native JavaScript module system using import/export syntax, which Vite
+      leverages to serve source files without bundling during development.
+    tags:
+      - JavaScript
+
+  - term: Rolldown
+    definition: >-
+      The Rust-based bundler that powers Vite's production build, providing
+      faster bundle times than legacy Rollup while maintaining full compatibility.
+    tags:
+      - Bundler
+
+  - term: Pre-bundling
+    altTerms:
+      - Dependency Pre-bundling
+    definition: >-
+      Vite's process of converting CommonJS and UMD modules to ESM and bundling
+      them with esbuild on first run to improve dev server cold-start performance.
+    tags:
+      - Performance
+
+  - term: InlineConfig
+    definition: >-
+      The configuration object passed to Vite's programmatic API functions
+      (createServer, build, preview, resolveConfig) to customize behavior.
+    tags:
+      - Configuration
+
+  - term: resolveId
+    definition: >-
+      A plugin hook that intercepts module resolution. Return a string to remap
+      the module id; return null to fall through to the next resolver.
+    tags:
+      - Plugin Hook
+
+  - term: transform
+    definition: >-
+      A plugin hook that modifies module source code. Receives the code and
+      module id; returns the transformed code and an optional source map.
+    tags:
+      - Plugin Hook
+
+  - term: configureServer
+    definition: >-
+      A plugin hook that exposes the ViteDevServer instance, allowing plugins to
+      register custom middleware or WebSocket message handlers.
+    tags:
+      - Plugin Hook
+
+  - term: transformIndexHtml
+    definition: >-
+      A plugin hook that transforms the HTML entry point, used to inject tags
+      such as scripts, stylesheets, or meta elements.
+    tags:
+      - Plugin Hook
+
+  - term: Module Graph
+    definition: >-
+      An internal Vite data structure that tracks all imported modules and their
+      dependency relationships, used to determine what to update during HMR.
+    tags:
+      - Internal
+
+  - term: Environment API
+    definition: >-
+      An advanced Vite API allowing frameworks to create multiple build
+      environments (browser, SSR, edge) within a single Vite process.
+    tags:
+      - Advanced
+
+  - term: Oxc
+    definition: >-
+      The Rust-based JavaScript transformer recommended by Vite for transforming
+      JavaScript and TypeScript files, replacing the deprecated esbuild transform.
+    tags:
+      - Transform
+
+  - term: Preview Server
+    definition: >-
+      A local HTTP server that serves the production build output for testing
+      before deployment. Created with Vite's preview() programmatic API.
+    tags:
+      - Server

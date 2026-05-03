@@ -1,0 +1,300 @@
+openapi: 3.1.0
+info:
+  title: Vite JavaScript API
+  description: >-
+    The Vite JavaScript API provides a fully-typed programmatic interface for
+    embedding Vite into build toolchains, frameworks, and custom CLI tools.
+    Functions include creating a dev server, triggering production builds,
+    launching preview servers, resolving configuration, and transforming source
+    files using Oxc or esbuild.
+  version: 6.0.0
+  contact:
+    name: Vite Team
+    url: https://vitejs.dev
+  license:
+    name: MIT
+    url: https://github.com/vitejs/vite/blob/main/LICENSE
+externalDocs:
+  description: Official Vite JavaScript API Documentation
+  url: https://vite.dev/guide/api-javascript
+servers:
+  - url: http://localhost:5173
+    description: Vite Development Server (default port)
+  - url: http://localhost:4173
+    description: Vite Preview Server (default port)
+tags:
+  - name: Dev Server
+    description: Create and manage the Vite development server
+  - name: Build
+    description: Trigger and configure production builds
+  - name: Preview
+    description: Launch local servers for testing production builds
+  - name: Configuration
+    description: Resolve and merge Vite configuration programmatically
+  - name: Transform
+    description: Transform JavaScript, TypeScript, and CSS source files
+paths:
+  /__vite_ping:
+    get:
+      operationId: pingDevServer
+      summary: Ping Dev Server
+      description: Health-check endpoint exposed by the Vite dev server to confirm it is running.
+      tags:
+        - Dev Server
+      responses:
+        '200':
+          description: Dev server is running
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+  /@vite/client:
+    get:
+      operationId: getViteClient
+      summary: Get Vite Client Script
+      description: Returns the Vite HMR client script injected into HTML pages during development.
+      tags:
+        - Dev Server
+      responses:
+        '200':
+          description: Vite HMR client JavaScript
+          content:
+            application/javascript:
+              schema:
+                type: string
+  /@fs/{filePath}:
+    get:
+      operationId: serveFileSystemFile
+      summary: Serve File System File
+      description: Serves a file directly from the host file system during development. Used by Vite for dependencies outside the project root.
+      tags:
+        - Dev Server
+      parameters:
+        - name: filePath
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Absolute file path on the host file system
+      responses:
+        '200':
+          description: File contents
+          content:
+            application/javascript:
+              schema:
+                type: string
+        '404':
+          description: File not found
+  /__open-in-editor:
+    get:
+      operationId: openInEditor
+      summary: Open File in Editor
+      description: Opens a source file in the configured editor. Used by the Vite error overlay to jump directly to the error location.
+      tags:
+        - Dev Server
+      parameters:
+        - name: file
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Relative path to the file to open
+        - name: line
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Line number to open to
+        - name: column
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Column number to open to
+      responses:
+        '200':
+          description: File opened successfully
+        '500':
+          description: Failed to open file
+components:
+  schemas:
+    InlineConfig:
+      type: object
+      description: Inline Vite configuration object passed to programmatic API functions.
+      properties:
+        root:
+          type: string
+          description: Project root directory. Absolute path or path relative to cwd.
+        base:
+          type: string
+          description: Base public path when served in development or production.
+        mode:
+          type: string
+          description: Mode to set for the environment (e.g. 'development', 'production').
+        define:
+          type: object
+          description: Define global constant replacements.
+          additionalProperties:
+            type: string
+        plugins:
+          type: array
+          description: Array of Vite plugins.
+          items:
+            type: object
+        publicDir:
+          type: string
+          description: Directory to serve as plain static assets.
+        cacheDir:
+          type: string
+          description: Directory to save cache files.
+        server:
+          $ref: '#/components/schemas/ServerOptions'
+        build:
+          $ref: '#/components/schemas/BuildOptions'
+        preview:
+          $ref: '#/components/schemas/PreviewOptions'
+    ServerOptions:
+      type: object
+      description: Vite dev server configuration options.
+      properties:
+        host:
+          oneOf:
+            - type: string
+            - type: boolean
+          description: Specify which IP addresses the server should listen on.
+        port:
+          type: integer
+          description: Specify server port. Note if the port is already being used, Vite will automatically try the next available port.
+          default: 5173
+        strictPort:
+          type: boolean
+          description: Set to true to exit if port is already in use.
+        open:
+          oneOf:
+            - type: boolean
+            - type: string
+          description: Automatically open the app in the browser on server start.
+        https:
+          type: object
+          description: Enable TLS + HTTP/2.
+        cors:
+          oneOf:
+            - type: boolean
+            - type: object
+          description: Configure CORS for the dev server.
+        hmr:
+          oneOf:
+            - type: boolean
+            - type: object
+          description: Disable or configure HMR connection.
+        watch:
+          type: object
+          description: File system watcher options.
+    BuildOptions:
+      type: object
+      description: Vite production build configuration options.
+      properties:
+        target:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: Browser compatibility target for the final bundle.
+          default: modules
+        outDir:
+          type: string
+          description: Specify the output directory.
+          default: dist
+        assetsDir:
+          type: string
+          description: Specify the directory to nest generated assets under.
+          default: assets
+        sourcemap:
+          oneOf:
+            - type: boolean
+            - type: string
+          description: Generate production source maps.
+        minify:
+          oneOf:
+            - type: boolean
+            - type: string
+          description: Set to false to disable minification, or specify the minifier to use.
+        rollupOptions:
+          type: object
+          description: Directly customize the underlying Rollup bundle.
+    PreviewOptions:
+      type: object
+      description: Vite preview server configuration options.
+      properties:
+        host:
+          oneOf:
+            - type: string
+            - type: boolean
+        port:
+          type: integer
+          default: 4173
+        strictPort:
+          type: boolean
+        open:
+          oneOf:
+            - type: boolean
+            - type: string
+        cors:
+          oneOf:
+            - type: boolean
+            - type: object
+    ViteDevServer:
+      type: object
+      description: The Vite development server instance returned by createServer().
+      properties:
+        config:
+          $ref: '#/components/schemas/InlineConfig'
+          description: The resolved Vite config.
+        httpServer:
+          type: object
+          description: Native Node.js HTTP server instance.
+        ws:
+          type: object
+          description: WebSocket server used for HMR.
+        watcher:
+          type: object
+          description: Chokidar file watcher instance.
+        middlewares:
+          type: object
+          description: The connect middleware application instance.
+    ResolvedConfig:
+      type: object
+      description: The fully resolved Vite configuration after all plugins and merges.
+      properties:
+        root:
+          type: string
+        base:
+          type: string
+        mode:
+          type: string
+        command:
+          type: string
+          enum:
+            - build
+            - serve
+        plugins:
+          type: array
+          items:
+            type: object
+    TransformResult:
+      type: object
+      description: Result of a source code transformation.
+      properties:
+        code:
+          type: string
+          description: The transformed source code.
+        map:
+          type: object
+          description: Source map for the transformation.
+        deps:
+          type: array
+          items:
+            type: string
+          description: File dependencies discovered during transformation.

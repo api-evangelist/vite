@@ -1,0 +1,249 @@
+openapi: 3.1.0
+info:
+  title: Vite Plugin API
+  description: >-
+    The Vite Plugin API extends Rolldown's plugin interface with Vite-specific
+    hooks for controlling the build pipeline, configuring the development
+    server, transforming HTML entry points, and managing hot module replacement
+    (HMR). Plugins are plain JavaScript objects returned from a factory
+    function and can hook into both serve (dev) and build phases.
+  version: 6.0.0
+  contact:
+    name: Vite Team
+    url: https://vitejs.dev
+  license:
+    name: MIT
+    url: https://github.com/vitejs/vite/blob/main/LICENSE
+externalDocs:
+  description: Official Vite Plugin API Documentation
+  url: https://vite.dev/guide/api-plugin
+servers:
+  - url: http://localhost:5173
+    description: Vite Development Server
+tags:
+  - name: Plugin Hooks
+    description: Universal and Vite-specific plugin hooks
+  - name: Hot Module Replacement
+    description: HMR-related plugin capabilities
+paths:
+  /__hmr/update:
+    post:
+      operationId: triggerHmrUpdate
+      summary: Trigger HMR Update
+      description: Internal endpoint used by the Vite HMR system to notify the client about module updates.
+      tags:
+        - Hot Module Replacement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HmrUpdate'
+      responses:
+        '200':
+          description: HMR update dispatched
+  /__hmr/full-reload:
+    post:
+      operationId: triggerFullReload
+      summary: Trigger Full Page Reload
+      description: Forces a full browser reload when HMR cannot patch a module in-place.
+      tags:
+        - Hot Module Replacement
+      responses:
+        '200':
+          description: Full reload triggered
+components:
+  schemas:
+    VitePlugin:
+      type: object
+      description: A Vite plugin object with lifecycle hooks.
+      properties:
+        name:
+          type: string
+          description: Plugin name used in warnings and errors.
+        enforce:
+          type: string
+          enum:
+            - pre
+            - post
+          description: Plugin ordering relative to core Vite plugins.
+        apply:
+          oneOf:
+            - type: string
+              enum:
+                - serve
+                - build
+            - type: object
+          description: Restrict the plugin to serve or build phase.
+        config:
+          type: object
+          description: Modify the resolved Vite config before it is finalized.
+        configResolved:
+          type: object
+          description: Read the final resolved config; used for storing config references.
+        configureServer:
+          type: object
+          description: Configure the Vite development server; add custom middleware.
+        configurePreviewServer:
+          type: object
+          description: Configure the Vite preview server.
+        transformIndexHtml:
+          type: object
+          description: Transform the HTML entry point; inject tags or modify HTML content.
+        handleHotUpdate:
+          type: object
+          description: Custom HMR update handler; filter or add modules to the HMR update.
+        resolveId:
+          type: object
+          description: Resolve a module id. Return string to override default resolution.
+        load:
+          type: object
+          description: Load a module. Return source code to override file system reads.
+        transform:
+          type: object
+          description: Transform a module's source code.
+        buildStart:
+          type: object
+          description: Called at the start of each build.
+        buildEnd:
+          type: object
+          description: Called when the build has finished.
+        closeBundle:
+          type: object
+          description: Called after the bundle has been written to disk.
+    HmrContext:
+      type: object
+      description: Context object passed to the handleHotUpdate hook.
+      properties:
+        file:
+          type: string
+          description: The changed file path.
+        timestamp:
+          type: integer
+          description: UNIX timestamp of the change event.
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModuleNode'
+          description: Array of Vite module nodes that import the changed file.
+        read:
+          type: string
+          description: Function to read the file content.
+        server:
+          type: object
+          description: The ViteDevServer instance.
+    HmrUpdate:
+      type: object
+      description: HMR update payload sent from the server to the browser client.
+      required:
+        - type
+        - updates
+      properties:
+        type:
+          type: string
+          enum:
+            - update
+            - full-reload
+            - prune
+            - error
+          description: Type of HMR event.
+        updates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModuleUpdate'
+          description: List of module updates.
+    ModuleUpdate:
+      type: object
+      description: Individual module update in an HMR payload.
+      required:
+        - type
+        - path
+        - timestamp
+      properties:
+        type:
+          type: string
+          enum:
+            - js-update
+            - css-update
+          description: Module type being updated.
+        path:
+          type: string
+          description: Module path as served by Vite.
+        acceptedPath:
+          type: string
+          description: The accepted module path (may differ from updated path).
+        timestamp:
+          type: integer
+          description: Timestamp for cache busting.
+    ModuleNode:
+      type: object
+      description: A node in the Vite module graph representing a single module.
+      properties:
+        id:
+          type: string
+          description: The resolved module id.
+        file:
+          type: string
+          description: The file path on disk.
+        importers:
+          type: array
+          items:
+            type: string
+          description: Set of module ids that import this module.
+        importedModules:
+          type: array
+          items:
+            type: string
+          description: Set of module ids this module imports.
+        url:
+          type: string
+          description: The URL at which this module is served.
+        type:
+          type: string
+          enum:
+            - js
+            - css
+          description: Module type.
+    IndexHtmlTransformResult:
+      type: object
+      description: Result returned from the transformIndexHtml hook.
+      properties:
+        html:
+          type: string
+          description: Modified HTML string.
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/HtmlTagDescriptor'
+          description: Tags to inject into the HTML.
+    HtmlTagDescriptor:
+      type: object
+      required:
+        - tag
+      description: Describes an HTML tag to inject via transformIndexHtml.
+      properties:
+        tag:
+          type: string
+          description: HTML tag name (e.g. 'script', 'link', 'meta').
+        attrs:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: boolean
+          description: Tag attributes.
+        children:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                $ref: '#/components/schemas/HtmlTagDescriptor'
+          description: Tag content or nested tags.
+        injectTo:
+          type: string
+          enum:
+            - head
+            - body
+            - head-prepend
+            - body-prepend
+          description: Where to inject the tag.

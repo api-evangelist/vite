@@ -1,0 +1,58 @@
+{
+  "name": "ViteInlineConfig",
+  "description": "Top-level configuration structure passed to Vite's programmatic API",
+  "type": "object",
+  "fields": [
+    {"name": "root", "type": "string", "required": false, "description": "Project root directory"},
+    {"name": "base", "type": "string", "required": false, "description": "Base public path"},
+    {"name": "mode", "type": "string", "required": false, "description": "Build mode (development|production|test)"},
+    {"name": "define", "type": "object", "required": false, "description": "Global constant replacements"},
+    {"name": "plugins", "type": "array<Plugin>", "required": false, "description": "Vite plugin array"},
+    {"name": "publicDir", "type": "string", "required": false, "description": "Static assets directory"},
+    {"name": "cacheDir", "type": "string", "required": false, "description": "Cache directory"},
+    {
+      "name": "server",
+      "type": "ServerOptions",
+      "required": false,
+      "description": "Dev server options",
+      "fields": [
+        {"name": "host", "type": "string|boolean", "required": false, "description": "Listen address"},
+        {"name": "port", "type": "integer", "required": false, "description": "Server port", "default": 5173},
+        {"name": "strictPort", "type": "boolean", "required": false, "description": "Fail if port in use"},
+        {"name": "open", "type": "boolean|string", "required": false, "description": "Auto-open browser"},
+        {"name": "cors", "type": "boolean|object", "required": false, "description": "CORS config"},
+        {"name": "hmr", "type": "boolean|object", "required": false, "description": "HMR config"}
+      ]
+    },
+    {
+      "name": "build",
+      "type": "BuildOptions",
+      "required": false,
+      "description": "Production build options",
+      "fields": [
+        {"name": "target", "type": "string|array<string>", "required": false, "description": "Browser targets"},
+        {"name": "outDir", "type": "string", "required": false, "description": "Output directory", "default": "dist"},
+        {"name": "assetsDir", "type": "string", "required": false, "description": "Assets subdirectory", "default": "assets"},
+        {"name": "sourcemap", "type": "boolean|string", "required": false, "description": "Source map generation"},
+        {"name": "minify", "type": "boolean|string", "required": false, "description": "Minification setting"},
+        {"name": "emptyOutDir", "type": "boolean", "required": false, "description": "Empty outDir before build"},
+        {"name": "copyPublicDir", "type": "boolean", "required": false, "description": "Copy public dir to outDir"}
+      ]
+    },
+    {
+      "name": "preview",
+      "type": "PreviewOptions",
+      "required": false,
+      "description": "Preview server options",
+      "fields": [
+        {"name": "host", "type": "string|boolean", "required": false},
+        {"name": "port", "type": "integer", "required": false, "default": 4173},
+        {"name": "strictPort", "type": "boolean", "required": false},
+        {"name": "open", "type": "boolean|string", "required": false},
+        {"name": "cors", "type": "boolean|object", "required": false}
+      ]
+    },
+    {"name": "envDir", "type": "string", "required": false, "description": "Directory to load .env files from"},
+    {"name": "envPrefix", "type": "string|array<string>", "required": false, "description": "Env variable prefix"}
+  ]
+}

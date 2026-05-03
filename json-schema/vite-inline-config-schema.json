@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/json-schema/vite-inline-config-schema.json",
+  "title": "Vite InlineConfig",
+  "description": "Inline configuration object passed to Vite's programmatic API functions such as createServer(), build(), and preview().",
+  "type": "object",
+  "properties": {
+    "root": {
+      "type": "string",
+      "description": "Project root directory. Can be an absolute path or a path relative to the current working directory."
+    },
+    "base": {
+      "type": "string",
+      "description": "Base public path when served in development or production. Must start and end with /.",
+      "default": "/"
+    },
+    "mode": {
+      "type": "string",
+      "description": "The mode to run in. 'development' enables HMR and source maps; 'production' enables optimizations.",
+      "enum": ["development", "production", "test"]
+    },
+    "define": {
+      "type": "object",
+      "description": "Define global constant replacements. Values are replaced as-is during build.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "plugins": {
+      "type": "array",
+      "description": "Array of Vite plugins to use.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "publicDir": {
+      "type": "string",
+      "description": "Directory to serve as plain static assets. Files in this directory are served at / during development.",
+      "default": "public"
+    },
+    "cacheDir": {
+      "type": "string",
+      "description": "Directory to save pre-bundled dependencies and other cache files.",
+      "default": "node_modules/.vite"
+    },
+    "server": {
+      "$ref": "#/$defs/ServerOptions"
+    },
+    "build": {
+      "$ref": "#/$defs/BuildOptions"
+    },
+    "preview": {
+      "$ref": "#/$defs/PreviewOptions"
+    },
+    "optimizeDeps": {
+      "type": "object",
+      "description": "Dependency pre-bundling options.",
+      "properties": {
+        "entries": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "array", "items": {"type": "string"}}
+          ],
+          "description": "Explicit entry points for dependency scanning."
+        },
+        "exclude": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Dependencies to exclude from pre-bundling."
+        },
+        "include": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Dependencies to force-include in pre-bundling."
+        }
+      }
+    },
+    "envDir": {
+      "type": "string",
+      "description": "Directory from which .env files are loaded.",
+      "default": "root"
+    },
+    "envPrefix": {
+      "oneOf": [
+        {"type": "string"},
+        {"type": "array", "items": {"type": "string"}}
+      ],
+      "description": "Prefix that env variables must have to be exposed to client code.",
+      "default": "VITE_"
+    }
+  },
+  "$defs": {
+    "ServerOptions": {
+      "type": "object",
+      "description": "Options for the Vite development server.",
+      "properties": {
+        "host": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "boolean"}
+          ],
+          "description": "IP address the server should listen on. Set to true or '0.0.0.0' to listen on all addresses."
+        },
+        "port": {
+          "type": "integer",
+          "description": "Server port. If already in use, Vite tries the next available port.",
+          "default": 5173
+        },
+        "strictPort": {
+          "type": "boolean",
+          "description": "Exit if the port is already in use instead of trying the next port.",
+          "default": false
+        },
+        "open": {
+          "oneOf": [
+            {"type": "boolean"},
+            {"type": "string"}
+          ],
+          "description": "Automatically open the app in the browser. Can be a URL string for a specific page."
+        },
+        "cors": {
+          "oneOf": [
+            {"type": "boolean"},
+            {"type": "object"}
+          ],
+          "description": "Configure CORS for the dev server."
+        },
+        "hmr": {
+          "oneOf": [
+            {"type": "boolean"},
+            {"type": "object"}
+          ],
+          "description": "Disable or configure the HMR connection."
+        }
+      }
+    },
+    "BuildOptions": {
+      "type": "object",
+      "description": "Options for Vite's production build.",
+      "properties": {
+        "target": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "array", "items": {"type": "string"}}
+          ],
+          "description": "Browser compatibility target for the final bundle.",
+          "default": "modules"
+        },
+        "outDir": {
+          "type": "string",
+          "description": "Output directory for the build.",
+          "default": "dist"
+        },
+        "assetsDir": {
+          "type": "string",
+          "description": "Directory to nest generated assets under outDir.",
+          "default": "assets"
+        },
+        "sourcemap": {
+          "oneOf": [
+            {"type": "boolean"},
+            {"type": "string", "enum": ["inline", "hidden"]}
+          ],
+          "description": "Generate production source maps."
+        },
+        "minify": {
+          "oneOf": [
+            {"type": "boolean"},
+            {"type": "string", "enum": ["esbuild", "terser"]}
+          ],
+          "description": "Minification settings. false disables minification.",
+          "default": "esbuild"
+        },
+        "emptyOutDir": {
+          "type": "boolean",
+          "description": "Empty the outDir on build.",
+          "default": true
+        },
+        "copyPublicDir": {
+          "type": "boolean",
+          "description": "Copy files from publicDir to outDir.",
+          "default": true
+        }
+      }
+    },
+    "PreviewOptions": {
+      "type": "object",
+      "description": "Options for the Vite preview server.",
+      "properties": {
+        "host": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "boolean"}
+          ]
+        },
+        "port": {
+          "type": "integer",
+          "default": 4173
+        },
+        "strictPort": {
+          "type": "boolean",
+          "default": false
+        },
+        "open": {
+          "oneOf": [
+            {"type": "boolean"},
+            {"type": "string"}
+          ]
+        },
+        "cors": {
+          "oneOf": [
+            {"type": "boolean"},
+            {"type": "object"}
+          ]
+        }
+      }
+    }
+  }
+}

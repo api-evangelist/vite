@@ -1,0 +1,39 @@
+{
+  "title": "Create Vite Dev Server",
+  "description": "Example of programmatically creating and starting a Vite development server using createServer().",
+  "operation": "createServer",
+  "request": {
+    "function": "createServer",
+    "config": {
+      "root": "/my-project",
+      "base": "/",
+      "mode": "development",
+      "server": {
+        "port": 5173,
+        "host": "localhost",
+        "open": false,
+        "hmr": true,
+        "cors": true
+      },
+      "plugins": []
+    }
+  },
+  "response": {
+    "type": "ViteDevServer",
+    "config": {
+      "root": "/my-project",
+      "base": "/",
+      "mode": "development",
+      "command": "serve"
+    },
+    "httpServer": {
+      "port": 5173,
+      "host": "localhost",
+      "listening": true
+    },
+    "resolvedUrls": {
+      "local": ["http://localhost:5173/"],
+      "network": []
+    }
+  }
+}

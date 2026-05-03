@@ -1,0 +1,92 @@
+extends:
+  - spectral:oas
+
+rules:
+  # Vite API conventions
+  vite-operation-ids-camel-case:
+    description: Operation IDs must use camelCase to match Vite's JavaScript API naming conventions.
+    message: "{{property}} must be camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  vite-paths-must-have-tags:
+    description: All operations must be tagged for proper documentation grouping.
+    message: "Operation {{path}} must have at least one tag"
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  vite-require-operation-summaries:
+    description: All operations must have a human-readable summary.
+    message: "Operation {{path}} must have a summary"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: summary
+      function: truthy
+
+  vite-require-descriptions:
+    description: All operations, schemas, and parameters must have descriptions for developer clarity.
+    message: "{{path}} must have a description"
+    severity: warn
+    given:
+      - "$.paths[*][*]"
+      - "$.components.schemas[*]"
+      - "$.paths[*][*].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  vite-server-paths-start-with-slash:
+    description: All paths must start with a forward slash.
+    message: "Path {{path}} must start with /"
+    severity: error
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/"
+
+  vite-schema-properties-have-types:
+    description: All schema properties must define an explicit type for TypeScript interoperability.
+    message: "Schema property {{path}} must have a type"
+    severity: warn
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: type
+      function: truthy
+
+  vite-use-openapi-31:
+    description: Vite API specs must use OpenAPI 3.1.0 to leverage full JSON Schema support.
+    message: "OpenAPI version must be 3.1.0"
+    severity: error
+    given: "$"
+    then:
+      field: openapi
+      function: pattern
+      functionOptions:
+        match: "^3\\.1\\."
+
+  vite-info-contact-required:
+    description: API info must include contact information pointing to the Vite team.
+    message: "Info object must include a contact field"
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  vite-responses-have-200:
+    description: GET operations must always define a 200 success response.
+    message: "GET operation {{path}} must define a 200 response"
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: truthy

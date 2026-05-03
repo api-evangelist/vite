@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "vite": "https://vitejs.dev/vocabulary#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "ViteConfig": "vite:ViteConfig",
+    "VitePlugin": "vite:VitePlugin",
+    "ViteDevServer": "vite:ViteDevServer",
+    "ViteBuildResult": "vite:ViteBuildResult",
+    "ModuleNode": "vite:ModuleNode",
+    "HmrContext": "vite:HmrContext",
+
+    "root": {"@id": "vite:root", "@type": "xsd:string"},
+    "base": {"@id": "vite:base", "@type": "xsd:string"},
+    "mode": {"@id": "vite:mode", "@type": "xsd:string"},
+    "port": {"@id": "vite:port", "@type": "xsd:integer"},
+    "host": {"@id": "vite:host"},
+    "outDir": {"@id": "vite:outDir", "@type": "xsd:string"},
+    "assetsDir": {"@id": "vite:assetsDir", "@type": "xsd:string"},
+    "target": {"@id": "vite:target"},
+    "sourcemap": {"@id": "vite:sourcemap"},
+    "minify": {"@id": "vite:minify"},
+    "plugins": {"@id": "vite:plugins", "@container": "@list"},
+    "publicDir": {"@id": "vite:publicDir", "@type": "xsd:string"},
+    "cacheDir": {"@id": "vite:cacheDir", "@type": "xsd:string"},
+    "envDir": {"@id": "vite:envDir", "@type": "xsd:string"},
+    "envPrefix": {"@id": "vite:envPrefix"},
+
+    "name": {"@id": "schema:name"},
+    "description": {"@id": "schema:description"},
+    "version": {"@id": "schema:version"},
+    "url": {"@id": "schema:url", "@type": "@id"},
+    "license": {"@id": "schema:license", "@type": "@id"},
+
+    "pluginName": {"@id": "vite:pluginName", "@type": "xsd:string"},
+    "enforce": {"@id": "vite:enforce", "@type": "xsd:string"},
+    "apply": {"@id": "vite:apply"},
+    "config": {"@id": "vite:config"},
+    "transform": {"@id": "vite:transform"},
+    "resolveId": {"@id": "vite:resolveId"},
+    "load": {"@id": "vite:load"},
+    "handleHotUpdate": {"@id": "vite:handleHotUpdate"},
+    "transformIndexHtml": {"@id": "vite:transformIndexHtml"},
+    "configureServer": {"@id": "vite:configureServer"},
+
+    "moduleId": {"@id": "vite:moduleId", "@type": "xsd:string"},
+    "moduleFile": {"@id": "vite:moduleFile", "@type": "xsd:string"},
+    "moduleUrl": {"@id": "vite:moduleUrl", "@type": "@id"},
+    "importers": {"@id": "vite:importers", "@container": "@set"},
+    "importedModules": {"@id": "vite:importedModules", "@container": "@set"},
+
+    "SoftwareApplication": "schema:SoftwareApplication",
+    "SoftwareLibrary": "schema:SoftwareLibrary",
+    "programmingLanguage": {"@id": "schema:programmingLanguage"}
+  }
+}
