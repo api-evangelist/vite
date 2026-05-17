@@ -76,9 +76,9 @@ common:
   - url: https://vite.dev/guide/
     type: Documentation
   - url: https://github.com/vitejs
-    type: GitHub Organization
+    type: GitHubOrganization
   - url: https://github.com/vitejs/vite
-    type: GitHub Repository
+    type: GitHubRepository
   - url: https://twitter.com/vite_js
     type: Twitter
   - url: https://chat.vitejs.dev
@@ -86,7 +86,7 @@ common:
   - url: https://www.npmjs.com/package/vite
     type: npm Package
   - url: https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md
-    type: Changelog
+    type: ChangeLog
   - url: https://github.com/vitejs/vite/blob/main/LICENSE
     type: License
   - url: https://github.com/vitejs/awesome-vite
