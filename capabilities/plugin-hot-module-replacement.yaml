@@ -1,0 +1,109 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Vite Plugin API — Hot Module Replacement
+  description: 'Vite Plugin API — Hot Module Replacement. 2 operations. Lead operation: Trigger Full Page Reload. Self-contained
+    Naftiko capability covering one Vite business surface.'
+  tags:
+  - Vite
+  - Hot Module Replacement
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VITE_API_KEY: VITE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plugin-hot-module-replacement
+    baseUri: http://localhost:5173
+    description: Vite Plugin API — Hot Module Replacement business capability. Self-contained, no shared references.
+    resources:
+    - name: __hmr-full-reload
+      path: /__hmr/full-reload
+      operations:
+      - name: triggerfullreload
+        method: POST
+        description: Trigger Full Page Reload
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __hmr-update
+      path: /__hmr/update
+      operations:
+      - name: triggerhmrupdate
+        method: POST
+        description: Trigger HMR Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: plugin-hot-module-replacement-rest
+    port: 8080
+    description: REST adapter for Vite Plugin API — Hot Module Replacement. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/hmr/full-reload
+      name: hmr-full-reload
+      description: REST surface for __hmr-full-reload.
+      operations:
+      - method: POST
+        name: triggerfullreload
+        description: Trigger Full Page Reload
+        call: plugin-hot-module-replacement.triggerfullreload
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/hmr/update
+      name: hmr-update
+      description: REST surface for __hmr-update.
+      operations:
+      - method: POST
+        name: triggerhmrupdate
+        description: Trigger HMR Update
+        call: plugin-hot-module-replacement.triggerhmrupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plugin-hot-module-replacement-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Vite Plugin API — Hot Module Replacement. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: trigger-full-page-reload
+      description: Trigger Full Page Reload
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: plugin-hot-module-replacement.triggerfullreload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: trigger-hmr-update
+      description: Trigger HMR Update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: plugin-hot-module-replacement.triggerhmrupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
