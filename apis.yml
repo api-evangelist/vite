@@ -90,3 +90,5 @@ common:
   type: SDK
 - url: https://github.com/vitejs/vite-plugin-react
   type: SDK
+- type: LLMsTxt
+  url: https://vite.dev/llms.txt
