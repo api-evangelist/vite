@@ -1,11 +1,8 @@
-# Vite
+# Vite (vite)
 
-Next-generation frontend build tool providing a lightning-fast dev server using native ES modules and an optimized production build via Rolldown. Vite's JavaScript and Plugin APIs enable deep programmatic integration for framework authors, build toolchain maintainers, and IDE plugin developers.
+Vite is a next-generation frontend build tool that dramatically improves the frontend development experience. It provides a lightning-fast dev server using native ES modules, an optimized production build via Rolldown/Rollup, a rich plugin API, and a fully-typed JavaScript API for programmatic usage.
 
-**Human URL:** https://vitejs.dev  
-**Documentation:** https://vite.dev/guide/  
-**GitHub Org:** https://github.com/vitejs  
-**APIs.json:** https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml)
 
 ## Scope
 
@@ -15,93 +12,71 @@ Next-generation frontend build tool providing a lightning-fast dev server using 
 
 ## Tags
 
-Build Tools, Bundler, Development Server, ESM, Frontend, Hot Module Replacement, JavaScript, Plugin API, TypeScript, Vite
+- Build Tools
+- Bundler
+- Development Server
+- ESM
+- Frontend
+- Hot Module Replacement
+- JavaScript
+- Plugin API
+- TypeScript
+- Vite
+
+## Timestamps
+
+- **Created:** 2025-01-08
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### Vite JavaScript API
 
-Programmatic interface for embedding Vite into build toolchains and custom CLI tools — createServer, build, preview, resolveConfig, and file transforms.
+The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains, frameworks, and custom CLI tools. It covers creating a dev server, triggering production builds, running previews, resolving configuration, and transforming files.
 
-**Human URL:** https://vite.dev/guide/api-javascript
+- **Human URL:** [https://vite.dev/guide/api-javascript](https://vite.dev/guide/api-javascript)
+
+#### Tags
+
+- Build
+- Dev Server
+- JavaScript
+- Plugin
+- Preview
+- TypeScript
+- Vite
 
 #### Properties
 
 - [Documentation](https://vite.dev/guide/api-javascript)
-- [OpenAPI](openapi/vite-javascript-api-openapi.yml)
-
----
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/openapi/vite-javascript-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/vite-javascript-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/vite-javascript-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/vite-plugin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/vite-plugin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Vite Plugin API
 
-Lifecycle hooks for extending Vite's build pipeline, dev server configuration, HTML transformation, and hot module replacement.
+The Vite Plugin API extends Rolldown's plugin interface with additional Vite-specific hooks, giving plugin authors full control over the build pipeline, dev server configuration, HTML transformation, and hot module replacement.
 
-**Human URL:** https://vite.dev/guide/api-plugin
+- **Human URL:** [https://vite.dev/guide/api-plugin](https://vite.dev/guide/api-plugin)
+
+#### Tags
+
+- Build
+- Hot Module Replacement
+- Plugin
+- Transform
+- Vite
 
 #### Properties
 
 - [Documentation](https://vite.dev/guide/api-plugin)
-- [OpenAPI](openapi/vite-plugin-api-openapi.yml)
-
----
-
-## OpenAPI Specifications
-
-| File | Description |
-|---|---|
-| [vite-javascript-api-openapi.yml](openapi/vite-javascript-api-openapi.yml) | Dev server endpoints, configuration schemas, and transform result types |
-| [vite-plugin-api-openapi.yml](openapi/vite-plugin-api-openapi.yml) | Plugin hook schemas, HMR update payloads, and module graph types |
-
-## Spectral Rules
-
-| File | Description |
-|---|---|
-| [vite-rules.yml](rules/vite-rules.yml) | Spectral ruleset enforcing Vite API conventions |
-
-## Naftiko Capabilities
-
-### Shared Definitions
-
-| File | APIs |
-|---|---|
-| [shared/javascript-api.yaml](capabilities/shared/javascript-api.yaml) | Vite JavaScript API |
-
-### Workflow Capabilities
-
-| File | Description |
-|---|---|
-| [frontend-build.yaml](capabilities/frontend-build.yaml) | Unified REST + MCP interface for frontend dev and build workflows |
-
-## JSON Schema
-
-| File | Description |
-|---|---|
-| [vite-inline-config-schema.json](json-schema/vite-inline-config-schema.json) | JSON Schema for the Vite InlineConfig object |
-
-## JSON Structure
-
-| File | Description |
-|---|---|
-| [vite-inline-config-structure.json](json-structure/vite-inline-config-structure.json) | Field-level structure for ViteInlineConfig |
-
-## JSON-LD Context
-
-| File | Description |
-|---|---|
-| [vite-context.jsonld](json-ld/vite-context.jsonld) | Linked data context mapping Vite vocabulary to schema.org |
-
-## Examples
-
-| File | Description |
-|---|---|
-| [vite-javascript-api-create-server-example.json](examples/vite-javascript-api-create-server-example.json) | createServer() request and response |
-| [vite-javascript-api-build-example.json](examples/vite-javascript-api-build-example.json) | build() production build request and output |
-
-## Vocabulary
-
-| File | Description |
-|---|---|
-| [vite-vocabulary.yml](vocabulary/vite-vocabulary.yml) | Canonical Vite terminology: HMR, Rolldown, ESM, plugin hooks |
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/openapi/vite-plugin-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/vite-javascript-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/vite-javascript-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/vite-plugin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/vite-plugin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
@@ -111,12 +86,15 @@ Lifecycle hooks for extending Vite's build pipeline, dev server configuration, H
 - [GitHub Repository](https://github.com/vitejs/vite)
 - [Twitter](https://twitter.com/vite_js)
 - [Discord](https://chat.vitejs.dev)
-- [npm Package](https://www.npmjs.com/package/vite)
+- [npm  Package](https://www.npmjs.com/package/vite)
 - [Changelog](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md)
 - [License](https://github.com/vitejs/vite/blob/main/LICENSE)
-- [Awesome Vite](https://github.com/vitejs/awesome-vite)
+- [Integrations](https://github.com/vitejs/awesome-vite)
+- [SDK](https://github.com/vitejs/vite-plugin-vue)
+- [SDK](https://github.com/vitejs/vite-plugin-react)
+- [L L Ms Txt](https://vite.dev/llms.txt)
 
 ## Maintainers
 
-**FN:** Kin Lane  
+**FN:** Kin Lane
 **Email:** kin@apievangelist.com

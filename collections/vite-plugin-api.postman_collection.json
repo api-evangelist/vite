@@ -1,0 +1,185 @@
+{
+  "item": [
+    {
+      "id": "4bfdf92f-1799-47ee-9180-8f56a68eca78",
+      "name": "Plugin Hooks",
+      "description": {
+        "content": "Universal and Vite-specific plugin hooks",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "c9eb62a5-79d2-49a4-a02f-81ca0525087d",
+      "name": "Hot Module Replacement",
+      "description": {
+        "content": "HMR-related plugin capabilities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28c04cfd-cd06-46bb-949c-1ee306b9c3d0",
+          "name": "Trigger HMR Update",
+          "request": {
+            "name": "Trigger HMR Update",
+            "description": {
+              "content": "Internal endpoint used by the Vite HMR system to notify the client about module updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__hmr",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"updates\": [\n    {\n      \"type\": \"<string>\",\n      \"path\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"acceptedPath\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"path\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"acceptedPath\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6888d08d-e4d1-4f4f-8c2b-a5cdc4c48663",
+              "name": "HMR update dispatched",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__hmr",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"updates\": [\n    {\n      \"type\": \"css-update\",\n      \"path\": \"string\",\n      \"timestamp\": 1702,\n      \"acceptedPath\": \"string\"\n    },\n    {\n      \"type\": \"css-update\",\n      \"path\": \"string\",\n      \"timestamp\": 507,\n      \"acceptedPath\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da1f0205-272b-4604-88e0-190fa98d3b3d",
+          "name": "Trigger Full Page Reload",
+          "request": {
+            "name": "Trigger Full Page Reload",
+            "description": {
+              "content": "Forces a full browser reload when HMR cannot patch a module in-place.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__hmr",
+                "full-reload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "854608ba-8956-430a-a66b-9d2fb0b774bd",
+              "name": "Full reload triggered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__hmr",
+                    "full-reload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5173",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b516f7b3-d139-4800-81bd-bf5078a7e05b",
+    "name": "Vite Plugin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Vite Plugin API extends Rolldown's plugin interface with Vite-specific hooks for controlling the build pipeline, configuring the development server, transforming HTML entry points, and managing hot module replacement (HMR). Plugins are plain JavaScript objects returned from a factory function and can hook into both serve (dev) and build phases.\n\nContact Support:\n Name: Vite Team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vite JavaScript API",
+    "version": "6.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dev Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ping Dev Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5173/__vite_ping"
+          },
+          "docs": "Health-check endpoint exposed by the Vite dev server to confirm it is running."
+        },
+        {
+          "info": {
+            "name": "Get Vite Client Script",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5173/@vite/client"
+          },
+          "docs": "Returns the Vite HMR client script injected into HTML pages during development."
+        },
+        {
+          "info": {
+            "name": "Serve File System File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5173/@fs/:filePath",
+            "params": [
+              {
+                "name": "filePath",
+                "value": "",
+                "type": "path",
+                "description": "Absolute file path on the host file system"
+              }
+            ]
+          },
+          "docs": "Serves a file directly from the host file system during development. Used by Vite for dependencies outside the project root."
+        },
+        {
+          "info": {
+            "name": "Open File in Editor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5173/__open-in-editor",
+            "params": [
+              {
+                "name": "file",
+                "value": "",
+                "type": "query",
+                "description": "Relative path to the file to open"
+              },
+              {
+                "name": "line",
+                "value": "",
+                "type": "query",
+                "description": "Line number to open to"
+              },
+              {
+                "name": "column",
+                "value": "",
+                "type": "query",
+                "description": "Column number to open to"
+              }
+            ]
+          },
+          "docs": "Opens a source file in the configured editor. Used by the Vite error overlay to jump directly to the error location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

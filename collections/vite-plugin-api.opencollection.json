@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vite Plugin API",
+    "version": "6.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hot Module Replacement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger HMR Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5173/__hmr/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Internal endpoint used by the Vite HMR system to notify the client about module updates."
+        },
+        {
+          "info": {
+            "name": "Trigger Full Page Reload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5173/__hmr/full-reload"
+          },
+          "docs": "Forces a full browser reload when HMR cannot patch a module in-place."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
