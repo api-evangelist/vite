@@ -86,8 +86,8 @@ common:
   - url: https://github.com/vitejs/awesome-vite
     type: Integrations
   - url: https://github.com/vitejs/vite-plugin-vue
-    type: SDK
+    type: SDKs
   - url: https://github.com/vitejs/vite-plugin-react
-    type: SDK
-  - type: LLMsTxt
+    type: SDKs
+  - type: LlmsText
     url: https://vite.dev/llms.txt
