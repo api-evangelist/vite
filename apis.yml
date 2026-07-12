@@ -65,6 +65,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: DomainSecurity
+    url: security/vite-domain-security.yml
   - url: https://vitejs.dev
     type: Website
   - url: https://vite.dev/guide/
