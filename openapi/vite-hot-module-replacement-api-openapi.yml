@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: Vite JavaScript Dev Server Hot Module Replacement API
+  description: The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains, frameworks, and custom CLI tools. Functions include creating a dev server, triggering production builds, launching preview servers, resolving configuration, and transforming source files using Oxc or esbuild.
+  version: 6.0.0
+  contact:
+    name: Vite Team
+    url: https://vitejs.dev
+  license:
+    name: MIT
+    url: https://github.com/vitejs/vite/blob/main/LICENSE
+servers:
+- url: http://localhost:5173
+  description: Vite Development Server (default port)
+- url: http://localhost:4173
+  description: Vite Preview Server (default port)
+tags:
+- name: Hot Module Replacement
+  description: HMR-related plugin capabilities
+paths:
+  /__hmr/update:
+    post:
+      operationId: triggerHmrUpdate
+      summary: Trigger HMR Update
+      description: Internal endpoint used by the Vite HMR system to notify the client about module updates.
+      tags:
+      - Hot Module Replacement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HmrUpdate'
+      responses:
+        '200':
+          description: HMR update dispatched
+  /__hmr/full-reload:
+    post:
+      operationId: triggerFullReload
+      summary: Trigger Full Page Reload
+      description: Forces a full browser reload when HMR cannot patch a module in-place.
+      tags:
+      - Hot Module Replacement
+      responses:
+        '200':
+          description: Full reload triggered
+components:
+  schemas:
+    ModuleUpdate:
+      type: object
+      description: Individual module update in an HMR payload.
+      required:
+      - type
+      - path
+      - timestamp
+      properties:
+        type:
+          type: string
+          enum:
+          - js-update
+          - css-update
+          description: Module type being updated.
+        path:
+          type: string
+          description: Module path as served by Vite.
+        acceptedPath:
+          type: string
+          description: The accepted module path (may differ from updated path).
+        timestamp:
+          type: integer
+          description: Timestamp for cache busting.
+    HmrUpdate:
+      type: object
+      description: HMR update payload sent from the server to the browser client.
+      required:
+      - type
+      - updates
+      properties:
+        type:
+          type: string
+          enum:
+          - update
+          - full-reload
+          - prune
+          - error
+          description: Type of HMR event.
+        updates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModuleUpdate'
+          description: List of module updates.
+externalDocs:
+  description: Official Vite JavaScript API Documentation
+  url: https://vite.dev/guide/api-javascript

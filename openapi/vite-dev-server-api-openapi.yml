@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Vite JavaScript Dev Server API
+  description: The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains, frameworks, and custom CLI tools. Functions include creating a dev server, triggering production builds, launching preview servers, resolving configuration, and transforming source files using Oxc or esbuild.
+  version: 6.0.0
+  contact:
+    name: Vite Team
+    url: https://vitejs.dev
+  license:
+    name: MIT
+    url: https://github.com/vitejs/vite/blob/main/LICENSE
+servers:
+- url: http://localhost:5173
+  description: Vite Development Server (default port)
+- url: http://localhost:4173
+  description: Vite Preview Server (default port)
+tags:
+- name: Dev Server
+  description: Create and manage the Vite development server
+paths:
+  /__vite_ping:
+    get:
+      operationId: pingDevServer
+      summary: Ping Dev Server
+      description: Health-check endpoint exposed by the Vite dev server to confirm it is running.
+      tags:
+      - Dev Server
+      responses:
+        '200':
+          description: Dev server is running
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+  /@vite/client:
+    get:
+      operationId: getViteClient
+      summary: Get Vite Client Script
+      description: Returns the Vite HMR client script injected into HTML pages during development.
+      tags:
+      - Dev Server
+      responses:
+        '200':
+          description: Vite HMR client JavaScript
+          content:
+            application/javascript:
+              schema:
+                type: string
+  /@fs/{filePath}:
+    get:
+      operationId: serveFileSystemFile
+      summary: Serve File System File
+      description: Serves a file directly from the host file system during development. Used by Vite for dependencies outside the project root.
+      tags:
+      - Dev Server
+      parameters:
+      - name: filePath
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Absolute file path on the host file system
+      responses:
+        '200':
+          description: File contents
+          content:
+            application/javascript:
+              schema:
+                type: string
+        '404':
+          description: File not found
+  /__open-in-editor:
+    get:
+      operationId: openInEditor
+      summary: Open File in Editor
+      description: Opens a source file in the configured editor. Used by the Vite error overlay to jump directly to the error location.
+      tags:
+      - Dev Server
+      parameters:
+      - name: file
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Relative path to the file to open
+      - name: line
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Line number to open to
+      - name: column
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Column number to open to
+      responses:
+        '200':
+          description: File opened successfully
+        '500':
+          description: Failed to open file
+externalDocs:
+  description: Official Vite JavaScript API Documentation
+  url: https://vite.dev/guide/api-javascript
