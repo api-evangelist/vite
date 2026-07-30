@@ -5,6 +5,18 @@ description: >-
   provides a lightning-fast dev server using native ES modules, an optimized production build via Rolldown/Rollup, a
   rich plugin API, and a fully-typed JavaScript API for programmatic usage.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
 image: https://vitejs.dev/logo.svg
@@ -24,43 +36,32 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: vite:javascript-api
-    name: Vite JavaScript API
-    description: >-
-      The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains,
-      frameworks, and custom CLI tools. It covers creating a dev server, triggering production builds, running previews,
-      resolving configuration, and transforming files.
-    humanURL: https://vite.dev/guide/api-javascript
-    tags:
-      - Build
-      - Dev Server
-      - JavaScript
-      - Plugin
-      - Preview
-      - TypeScript
-      - Vite
-    properties:
-      - type: Documentation
-        url: https://vite.dev/guide/api-javascript
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/openapi/vite-javascript-api-openapi.yml
-  - aid: vite:plugin-api
-    name: Vite Plugin API
-    description: >-
-      The Vite Plugin API extends Rolldown's plugin interface with additional Vite-specific hooks, giving plugin authors
-      full control over the build pipeline, dev server configuration, HTML transformation, and hot module replacement.
-    humanURL: https://vite.dev/guide/api-plugin
-    tags:
-      - Build
-      - Hot Module Replacement
-      - Plugin
-      - Transform
-      - Vite
-    properties:
-      - type: Documentation
-        url: https://vite.dev/guide/api-plugin
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/openapi/vite-plugin-api-openapi.yml
+- aid: vite:vite-dev-server-api
+  name: Vite Dev Server API
+  description: Create and manage the Vite development server
+  humanURL: https://vite.dev/guide/api-javascript
+  tags:
+  - Dev Server
+  properties:
+  - type: OpenAPI
+    url: openapi/vite-dev-server-api-openapi.yml
+  - type: Documentation
+    url: https://vite.dev/guide/api-javascript
+  - type: Documentation
+    url: https://vite.dev/guide/api-plugin
+- aid: vite:vite-hot-module-replacement-api
+  name: Vite Hot Module Replacement API
+  description: HMR-related plugin capabilities
+  humanURL: https://vite.dev/guide/api-javascript
+  tags:
+  - Hot Module Replacement
+  properties:
+  - type: OpenAPI
+    url: openapi/vite-hot-module-replacement-api-openapi.yml
+  - type: Documentation
+    url: https://vite.dev/guide/api-javascript
+  - type: Documentation
+    url: https://vite.dev/guide/api-plugin
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
