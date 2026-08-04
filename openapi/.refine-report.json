@@ -1,0 +1,16 @@
+{
+  "provider": "vite",
+  "sources": [
+    "vite-dev-server-api-openapi.yml",
+    "vite-hot-module-replacement-api-openapi.yml"
+  ],
+  "outputs": [
+    "vite-dev-server-api-openapi.yml",
+    "vite-hot-module-replacement-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
