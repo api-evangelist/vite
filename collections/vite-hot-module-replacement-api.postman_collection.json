@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "fc00943f-570a-4c96-b64d-371973a368c1",
+      "name": "Hot Module Replacement",
+      "description": {
+        "content": "HMR-related plugin capabilities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1222495c-a2b3-4ab4-875d-3bcf41f9268e",
+          "name": "Trigger HMR Update",
+          "request": {
+            "name": "Trigger HMR Update",
+            "description": {
+              "content": "Internal endpoint used by the Vite HMR system to notify the client about module updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__hmr",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"updates\": [\n    {\n      \"type\": \"<string>\",\n      \"path\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"acceptedPath\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"path\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"acceptedPath\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b9fa6c5-728a-4dd0-a66f-51da0f6bb7e5",
+              "name": "HMR update dispatched",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__hmr",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"updates\": [\n    {\n      \"type\": \"js-update\",\n      \"path\": \"string\",\n      \"timestamp\": 1356,\n      \"acceptedPath\": \"string\"\n    },\n    {\n      \"type\": \"css-update\",\n      \"path\": \"string\",\n      \"timestamp\": 3872,\n      \"acceptedPath\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3a418d0-2cb6-4ccf-9a3b-01a302c8f5e3",
+          "name": "Trigger Full Page Reload",
+          "request": {
+            "name": "Trigger Full Page Reload",
+            "description": {
+              "content": "Forces a full browser reload when HMR cannot patch a module in-place.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__hmr",
+                "full-reload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed5ccc78-b64f-481f-8647-cea3b1f409dc",
+              "name": "Full reload triggered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__hmr",
+                    "full-reload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5173",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6e102ad8-e1f7-4221-ade7-231fea9a9385",
+    "name": "Vite JavaScript Dev Server Hot Module Replacement API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains, frameworks, and custom CLI tools. Functions include creating a dev server, triggering production builds, launching preview servers, resolving configuration, and transforming source files using Oxc or esbuild.\n\nContact Support:\n Name: Vite Team",
+      "type": "text/plain"
+    }
+  }
+}

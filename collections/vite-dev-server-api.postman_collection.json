@@ -1,0 +1,432 @@
+{
+  "item": [
+    {
+      "id": "02e6bf75-7411-417c-baf3-ad94336cb0f2",
+      "name": "Dev Server",
+      "description": {
+        "content": "Create and manage the Vite development server",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88f9c485-3f27-4c09-8a70-8743203fa543",
+          "name": "Ping Dev Server",
+          "request": {
+            "name": "Ping Dev Server",
+            "description": {
+              "content": "Health-check endpoint exposed by the Vite dev server to confirm it is running.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__vite_ping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8426a8e-4cf0-4b1a-a5d4-a1118baf7c3e",
+              "name": "Dev server is running",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__vite_ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "pong",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06d2107a-0b92-461f-b299-a999d496003c",
+          "name": "Get Vite Client Script",
+          "request": {
+            "name": "Get Vite Client Script",
+            "description": {
+              "content": "Returns the Vite HMR client script injected into HTML pages during development.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "@vite",
+                "client"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/javascript"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3980084c-6c9b-4434-be9f-f91ee8e5b990",
+              "name": "Vite HMR client JavaScript",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@vite",
+                    "client"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/javascript"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/javascript"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "472c31c1-14ae-438e-bdea-2c44dcf4238c",
+          "name": "Serve File System File",
+          "request": {
+            "name": "Serve File System File",
+            "description": {
+              "content": "Serves a file directly from the host file system during development. Used by Vite for dependencies outside the project root.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "@fs",
+                ":filePath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filePath",
+                  "description": "(Required) Absolute file path on the host file system"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/javascript"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "153853f4-f5c4-498f-afac-db02ce47dcbc",
+              "name": "File contents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@fs",
+                    ":filePath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filePath",
+                      "description": "(Required) Absolute file path on the host file system"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/javascript"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/javascript"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "944d5b9d-a4d5-40d6-815b-b451c7b15481",
+              "name": "File not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@fs",
+                    ":filePath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filePath",
+                      "description": "(Required) Absolute file path on the host file system"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3de4379-1f9c-46e3-b87c-8bc08a44df0c",
+          "name": "Open File in Editor",
+          "request": {
+            "name": "Open File in Editor",
+            "description": {
+              "content": "Opens a source file in the configured editor. Used by the Vite error overlay to jump directly to the error location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__open-in-editor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "file",
+                  "value": "<string>",
+                  "description": "(Required) Relative path to the file to open"
+                },
+                {
+                  "disabled": false,
+                  "key": "line",
+                  "value": "<integer>",
+                  "description": "Line number to open to"
+                },
+                {
+                  "disabled": false,
+                  "key": "column",
+                  "value": "<integer>",
+                  "description": "Column number to open to"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20194927-3fdb-4b3b-8a07-c58680980ed5",
+              "name": "File opened successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__open-in-editor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "file",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "line",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "column",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11b9b523-b0e2-427d-ab61-6fd3a45ea250",
+              "name": "Failed to open file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__open-in-editor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "file",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "line",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "column",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5173",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "df0ce2a5-e3c0-45d3-9ee8-1d8022dfb957",
+    "name": "Vite JavaScript Dev Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains, frameworks, and custom CLI tools. Functions include creating a dev server, triggering production builds, launching preview servers, resolving configuration, and transforming source files using Oxc or esbuild.\n\nContact Support:\n Name: Vite Team",
+      "type": "text/plain"
+    }
+  }
+}
