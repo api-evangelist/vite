@@ -5,6 +5,18 @@ description: >-
   provides a lightning-fast dev server using native ES modules, an optimized production build via Rolldown/Rollup, a
   rich plugin API, and a fully-typed JavaScript API for programmatic usage.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
