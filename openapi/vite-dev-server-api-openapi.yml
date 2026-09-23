@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Vite JavaScript Dev Server API
   description: The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains, frameworks, and custom CLI tools. Functions include creating a dev server, triggering production builds, launching preview servers, resolving configuration, and transforming source files using Oxc or esbuild.
