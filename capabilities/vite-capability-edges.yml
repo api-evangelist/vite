@@ -1,0 +1,25 @@
+slug: vite
+provider: Vite
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Dev Server
+  spec_file: vite-dev-server-api-openapi.yml
+  capability_id: BC-4200.70
+  capability_id_l1: BC-4200
+  capability_name: Engineering Productivity Management
+  confidence: 0.7
+  evidence: Functions include creating a dev server, triggering production builds, launching preview servers
+    ... 'Ping Dev Server', 'Serve File System File', 'Open File in Editor'
+  reason: Vite's dev server is developer tooling that lifts delivery throughput — Engineering Productivity
+    Management is the closest honest fit for a build tool's local development surface.

@@ -83,6 +83,9 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: CapabilityMap
+    url: capabilities/vite-capability-edges.yml
+    name: Vite Business Capability Map
   - type: AgenticAccess
     url: agentic-access/vite-agentic-access.yml
   - type: DomainSecurity
