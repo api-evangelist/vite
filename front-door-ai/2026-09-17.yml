@@ -1,0 +1,29 @@
+# Front Door AI Index — vite — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: vite
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: vitejs.dev
+  final_host: vite.dev
+  ownership: own
+  owner: vite
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 2
+  band: 3
+  band_label: light
+  host_score: 2
+  density: 3.93
+  words: 509
+  tiers:
+    agentic: 1
+    core: 1
+    model: 0
+  ambiguous: 0
+  top_terms:
+    LLMs: 1
+    llms.txt: 1
