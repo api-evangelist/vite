@@ -1,4 +1,4 @@
-# Vite (vite)
+# Vite
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,99 +66,156 @@
 
 Vite is a next-generation frontend build tool that dramatically improves the frontend development experience. It provides a lightning-fast dev server using native ES modules, an optimized production build via Rolldown/Rollup, a rich plugin API, and a fully-typed JavaScript API for programmatic usage.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/apis.yml)
+**Areas:** Build Tools · Bundler · Development Server · ESM · Frontend · Hot Module Replacement · JavaScript · Plugin API · TypeScript · Vite
 
-## Scope
+## Vite on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Vite is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/vite/](https://apis.io/providers/vite/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (2)
 
-- Build Tools
-- Bundler
-- Development Server
-- ESM
-- Frontend
-- Hot Module Replacement
-- JavaScript
-- Plugin API
-- TypeScript
-- Vite
+- [Vite Dev Server API](https://apis.io/apis/vite/vite-dev-server-api/) — Create and manage the Vite development server
+- [Vite Hot Module Replacement API](https://apis.io/apis/vite/vite-hot-module-replacement-api/) — HMR-related plugin capabilities
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-08
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Vite JavaScript API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Vite JavaScript API provides a fully-typed programmatic interface for embedding Vite into build toolchains, frameworks, and custom CLI tools. It covers creating a dev server, triggering production builds, running previews, resolving configuration, and transforming files.
+- [Vite Agentic Access](https://apis.io/agentic-access/vite/vite-agentic-access/)
 
-- **Human URL:** [https://vite.dev/guide/api-javascript](https://vite.dev/guide/api-javascript)
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Build
-- Dev Server
-- JavaScript
-- Plugin
-- Preview
-- TypeScript
-- Vite
+- [Vite InlineConfig](https://apis.io/schemas/vite/vite-inline-config/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://vite.dev/guide/api-javascript)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/openapi/vite-javascript-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/vite-javascript-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vite-javascript-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/vite-plugin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vite-plugin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### Vite Plugin API
+- [Vite Inline Config Structure](https://apis.io/json-structure/vite/vite-inline-config-structure/)
 
-The Vite Plugin API extends Rolldown's plugin interface with additional Vite-specific hooks, giving plugin authors full control over the build pipeline, dev server configuration, HTML transformation, and hot module replacement.
+#### JSON-LD (1)
 
-- **Human URL:** [https://vite.dev/guide/api-plugin](https://vite.dev/guide/api-plugin)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Vite Context](https://apis.io/jsonld/vite/vite-context/)
 
-- Build
-- Hot Module Replacement
-- Plugin
-- Transform
-- Vite
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://vite.dev/guide/api-plugin)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/vite/refs/heads/main/openapi/vite-plugin-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/vite-javascript-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vite-javascript-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/vite-plugin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/vite-plugin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Vite Vocabulary](https://apis.io/vocabularies/vite/vite-vocabulary/)
 
-## Common Properties
+#### Examples (2)
+
+Example requests and responses.
+
+- [Vite Javascript Api Build Example](https://apis.io/examples/vite/vite-javascript-api-build-example/)
+- [Vite Javascript Api Create Server Example](https://apis.io/examples/vite/vite-javascript-api-create-server-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Vite JavaScript Dev Server API](https://apis.io/collections/vite/open-vite-dev-server-api/)
+- [Vite JavaScript Dev Server Hot Module Replacement API](https://apis.io/collections/vite/open-vite-hot-module-replacement-api/)
+- [Vite JavaScript API](https://apis.io/collections/vite/open-vite-javascript-api/)
+- [Vite Plugin API](https://apis.io/collections/vite/open-vite-plugin-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Vite — jsonschema rules](https://apis.io/rules/vite/vite-jsonschema-spectral-rules/)
+- [Vite API Rules](https://apis.io/rules/vite/vite-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Vite Domain Security](https://apis.io/security/vite/vite-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Vite Plans Pricing](https://apis.io/plans/vite/vite-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Vite Rate Limits](https://apis.io/rate-limits/vite/vite-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Vite Finops](https://apis.io/finops/vite/vite-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://vitejs.dev)
 - [Documentation](https://vite.dev/guide/)
-- [GitHub Organization](https://github.com/vitejs)
-- [GitHub Repository](https://github.com/vitejs/vite)
-- [Twitter](https://twitter.com/vite_js)
-- [Discord](https://chat.vitejs.dev)
-- [npm  Package](https://www.npmjs.com/package/vite)
 - [Changelog](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md)
-- [License](https://github.com/vitejs/vite/blob/main/LICENSE)
-- [Integrations](https://github.com/vitejs/awesome-vite)
-- [SDK](https://github.com/vitejs/vite-plugin-vue)
-- [SDK](https://github.com/vitejs/vite-plugin-react)
-- [L L Ms Txt](https://vite.dev/llms.txt)
+- [GitHub](https://github.com/vitejs)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 47.6 |
+| Contract governance | 13.6 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/vite/](https://apis.io/providers/vite/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Vite: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/vite/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
